@@ -1,7 +1,11 @@
-let fs = require("fs");
-//console.log(fs);
+let express = require("express");
+let rutasProductos = require("./routes/productos");
+let rutasMain = require("./routes/main")
 
-let datos = fs.readFileSync(__dirname + "/prueba.txt", "utf-8");
-console.log(datos)
-let moment = require("moment");
-console.log(moment().format("MMM Do YYYY"));
+let app = express();
+
+app.listen(3000, () => console.log("EXITOSO"));
+
+app.use("/productos", rutasProductos);
+app.use("/", rutasMain);
+
